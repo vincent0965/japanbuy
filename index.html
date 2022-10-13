@@ -1,0 +1,451 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/vue/2.7.11/vue.min.js" integrity="sha512-rUE9uHSFfDHr7vyxa541AcZiF0PvckTp83z2LLbFhQaXrgV2xiC0mtR5CQfM6mbdpIO2ODj+lFNj05LwvEkq9Q==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <style>
+
+        main {
+            display: flex;
+            flex-grow: 1;
+            overflow: hidden;
+
+            .content {
+                box-sizing: border-box;
+                width: 100%;
+                flex-shrink: 0;
+                overflow-y: scroll;
+                transition: transform 300ms;
+            }
+        }
+
+        .product {
+            position: relative;
+            margin: 20px;
+            background: #fff;
+            box-shadow: 0 0 10px rgba(0, 0, 0, .1);
+
+            .info-box {
+                display: flex;
+                padding: 15px 5px;
+
+                img{
+                    width:30%;
+                    height:auto
+                }
+
+                h2 {
+                    margin: 10px 0;
+                    padding: 0;
+                    font-size: 18px;
+                }
+
+                p {
+                    margin: 0;
+                    color: #aba6a6;
+                }
+            }
+        }
+        
+        table {
+            margin: 20px;
+            border-spacing: 0;
+            border-collapse: collapse;
+            background-color: #fff;
+            box-shadow: 0 0 10px rgba(0, 0, 0, .1);
+
+            tr {
+                border-bottom: 1px solid #f3f3f3;
+            }
+
+            th,  td {
+                min-width: 2em;
+                width: 15%;
+                padding: 15px;
+                text-align: right;
+
+                &:first-child {
+                    width: 40%;
+                    text-align: left;
+                }
+
+                &:last-child {
+                    padding-right: 10px;
+                }
+            }
+
+            thead {
+                color: #ef8a8b;
+                font-size: 16px;
+                text-align: left;
+
+                .time {
+                    color: #c2c2c2;
+                    font-size: 14px;
+                    text-align: right;
+                }
+            }
+
+            tbody {
+                font-size: 14px;
+
+                .table-title {
+                    color: #c2c2c2;
+                    font-size: 12px;
+                }
+
+                .button-del {
+                    width: 30px;
+                    height: 30px;
+                    outline: 0;
+                    border: 0;
+                    padding: 0 0 .4em;
+                    color: #b6b6b6;
+                    font-size: 18px;
+                    background: transparent;
+                    cursor: pointer;
+                }
+            }
+
+            tfoot {
+                color: #959595;
+                font-size: 12px;
+                background: #f9f9f9;
+
+                .total-price {
+                    margin-left: 1em;
+                    color: #000;
+                    font-size: 20px;
+                }
+            }
+        }
+
+        @keyframes check {
+            from { stroke-dashoffset: 80; }
+            to { stroke-dashoffset: 0; }
+        }
+
+        @keyframes circle {
+            from { stroke-dashoffset: -300; }
+            to { stroke-dashoffset: 0; }
+        }
+
+
+    </style>
+</head>
+<body>
+    <div id="app">
+        <!-- 主要展示區塊 -->
+        <main :class="{ shift: isShowingCart }">
+            <!-- 瀏覽產品 -->
+            <div class="content">
+                請輸入你/妳的姓名:
+                <input type="text" v-model="message" />
+                <!-- 範例 HTML -->
+                <div class="product" v-for="product in products">
+                    <div class="info-box">
+                        <img :src="product.thumb" />
+                        <div>
+                            <h2>{{ product.name }}</h2>
+                            <h3>{{ product.text }}</h3>
+                            <p>價格:${{ product.price }}</p>
+                        </div>
+                    </div>
+                    <div class="action-box">
+                        <div>
+                            <button class="round" @click="minusOne(product)">-</button>
+                            <span>{{ product.amountShow }}</span>
+                            <button class="round" @click="addOne(product)">+</button>
+                        </div>
+                        <button @click="addToCart(product)">add to cart</button>
+                    </div>
+                </div>
+            </div>
+    
+            <!-- 購物清單 -->
+            <div class="content">
+                <table>
+                    <thead>
+                        <tr>
+                            <th colspan="5">這是 {{ message }} 的購物清單喔!!</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr class="table-title">
+                            <td>品項</td>
+                            <td></td>
+                            <td>數量</td>
+                            <td></td>
+                            <td>單價</td>
+                            <td></td>
+                            <td>小計</td>
+                            <td></td>
+                        </tr>
+                        <tr v-for="product in productsInCart">
+                            <td>{{ product.name }}</td>
+                            <td></td>
+                            <td>{{ product.amount }}</td>
+                            <td></td>
+                            <td>{{ product.price }}</td>
+                            <td></td>
+                            <td>{{ product.sum }}</td>
+                            <td>
+                                <button class="button-del" @click="remove(product)">×</button>
+                            </td>
+                        </tr>
+                    </tbody>
+                    <tfoot>
+                        <tr>
+                            <td colspan="3">Total <span class="total-price">$ {{ total }}</span></td>
+                            <td></td>
+                        </tr>
+                    </tfoot>
+                </table>
+                <!-- <button class="checkout">前往付款</button> -->
+                <a>
+                    1.本商品包含日本消費稅(10%)以及國際貨運費用。
+                    <br />
+                    2.確認下訂到取貨需約兩周。
+                    <br />
+                    3.如果有想買但沒出現的，歡迎許願。
+                    <br />
+                    4.選擇好後請將購物清單截圖或拍照寄給我。
+                    <br />
+                    5.等我想到再補上來...
+                </a>
+            </div>
+        </main>
+    </div>
+
+    <script>
+        new Vue({
+            el: "#app",
+            data: {
+                isShowingCart: false,
+                message: '',
+                products: [
+                    {
+                        id: '101',
+                        name: '大正漢方胃腸薬',
+                        price:470 ,
+                        text:'大正漢方胃腸薬 48包',
+                        thumb: 'https://thumbnail.image.rakuten.co.jp/@0_mall/sundrug/cabinet/39drug2/4987306009486.jpg',
+                        amount: 0,
+                        amountShow: 0,
+                        showingIcon: false
+                    }, {
+                        id: '102',
+                        name: 'キャベジン胃腸薬',
+                        price: 415,
+                        text:'キャベジン胃腸薬 300錠入',
+                        thumb: 'https://shop.r10s.jp/sundrug/cabinet/39drug2/4987067205202.jpg',
+                        amount: 0,
+                        amountShow: 0,
+                        showingIcon: false
+                    }, {
+                        id: '103',
+                        name: '第一三共胃腸薬',
+                        price: 330,
+                        text:'第一三共胃腸薬 粉狀 60包入',
+                        thumb: 'https://thumbnail.image.rakuten.co.jp/@0_mall/fortress/cabinet/products/06713660/medeal4987107629753.jpg',
+                        amount: 0,
+                        amountShow: 0,
+                        showingIcon: false
+                    }, {
+                        id: '104',
+                        name: '御岳百草丸',
+                        price: 500,
+                        text:'御岳百草丸 4100錠入',
+                        thumb: 'https://thumbnail.image.rakuten.co.jp/@0_mall/v-drug/cabinet/0103/4987352002455.jpg',
+                        amount: 0,
+                        amountShow: 0,
+                        showingIcon: false
+                    }, {
+                        id: '105',
+                        name: '太田胃散A',
+                        price: 500,
+                        text:'太田胃散A 300錠入(錠劑)',
+                        thumb: 'https://thumbnail.image.rakuten.co.jp/@0_mall/sundrug/cabinet/39drug2/4987033811116.jpg',
+                        amount: 0,
+                        amountShow: 0,
+                        showingIcon: false
+                    },{
+                        id: '201',
+                        name: 'アリナミン',
+                        price: 1500,
+                        text:'合力他命 270錠入',
+                        thumb: 'https://image.rakuten.co.jp/biccamera/cabinet/product/0890/00000001882212_a01.jpg',
+                        amount: 0,
+                        amountShow: 0,
+                        showingIcon: false
+                    },{
+                        id: '202',
+                        name: 'アリナミン',
+                        price: 1500,
+                        text:'合力他命 270錠入',
+                        thumb: 'https://image.rakuten.co.jp/biccamera/cabinet/product/0890/00000001882212_a01.jpg',
+                        amount: 0,
+                        amountShow: 0,
+                        showingIcon: false
+                    }, {
+                        id: '301',
+                        name: '強力わかもと',
+                        price: 625,
+                        text:'若元錠 1000錠入',
+                        thumb: 'https://shop.r10s.jp/stacon/cabinet/2016-1/4987243114014_1.jpg',
+                        amount: 0,
+                        amountShow: 0,
+                        showingIcon: false
+                    }, {
+                        id: '302',
+                        name: 'サロンパス',
+                        price: 290,
+                        text:'薩隆帕斯藥布 120枚入 (4.6 * 7.2 公分)',
+                        thumb: 'https://shop.r10s.jp/sundrug/cabinet/01drug/4987188100578.jpg',
+                        amount: 0,
+                        amountShow: 0,
+                        showingIcon: false
+                    }, {
+                        id: '401',
+                        name: 'チョコラBB',
+                        price: 780,
+                        text:'CHOCOLA BB B群 270錠入',
+                        thumb: 'https://thumbnail.image.rakuten.co.jp/@0_mall/sundrug/cabinet/01drug/4987028123668.jpg',
+                        amount: 0,
+                        amountShow: 0,
+                        showingIcon: false
+                    }, {
+                        id: '402',
+                        name: 'ペアアクネ クリームW',
+                        price: 190,
+                        text:'PAIR 皮膚藥(24g)',
+                        thumb: 'https://thumbnail.image.rakuten.co.jp/@0_mall/ladydrug/cabinet/gazo21/4903301025726_2.jpg',
+                        amount: 0,
+                        amountShow: 0,
+                        showingIcon: false
+                    }, {
+                        id: '403',
+                        name: 'メンソレータム AD20 乳液',
+                        price: 420,
+                        text:'曼秀雷敦 AD20(金色) 乳液(120ml)',
+                        thumb: 'https://shop.r10s.jp/genki-e-shop-hanshin/cabinet/c/4987241119912.jpg',
+                        amount: 0,
+                        amountShow: 0,
+                        showingIcon: false
+                    }, {
+                        id: '403',
+                        name: 'メンソレータム AD20',
+                        price: 450,
+                        text:'曼秀雷敦 AD20(金色) 藥膏(150g)',
+                        thumb: 'https://shop.r10s.jp/energy/cabinet/00796223/f1400.gif',
+                        amount: 0,
+                        amountShow: 0,
+                        showingIcon: false
+                    }, {
+                        id: '501',
+                        name: 'Vロートアクティブプレミアム',
+                        price: 340,
+                        text:'Premium V 眼藥水(15ml)',
+                        thumb: 'https://thumbnail.image.rakuten.co.jp/@0_mall/uniquedrugstore2021/cabinet/08685604/4987241174461.jpg',
+                        amount: 0,
+                        amountShow: 0,
+                        showingIcon: false
+                    }, {
+                        id: '502',
+                        name: '参天製薬 サンテFX ネオ',
+                        price: 90,
+                        text:'參天眼藥水(白色) (12ml)',
+                        thumb: 'https://thumbnail.image.rakuten.co.jp/@0_mall/curecarat/cabinet/dai2/09141886/4987084410443.jpg',
+                        amount: 0,
+                        amountShow: 0,
+                        showingIcon: false
+                    }, {
+                        id: '601',
+                        name: 'パブロンゴールドA微粒',
+                        price: 430,
+                        text:'大正製藥 感冒藥 44包入',
+                        thumb: 'https://thumbnail.image.rakuten.co.jp/@0_mall/uniquedrugstore2021/cabinet/compass1643006382.jpg',
+                        amount: 0,
+                        amountShow: 0,
+                        showingIcon: false
+                    }, {
+                        id: '602',
+                        name: '龍角散ダイレクトスティックピーチ',
+                        price: 430,
+                        text:'龍角散 喉嚨藥(90g)',
+                        thumb: 'https://shop.r10s.jp/healthy-good/cabinet/item/r_21/rkki-210344.jpg',
+                        amount: 0,
+                        amountShow: 0,
+                        showingIcon: false
+                    }, {
+                        id: '603',
+                        name: 'イブクイック頭痛薬',
+                        price: 240,
+                        text:'EVE頭痛藥(藍色) 40錠入',
+                        thumb: 'https://thumbnail.image.rakuten.co.jp/@0_mall/sundrug/cabinet/39drug2/4987300052716.jpg',
+                        amount: 0,
+                        amountShow: 0,
+                        showingIcon: false
+                    }
+                ],
+            },
+            methods: {
+                // 切換 產品列表 / 購物車 的 tab
+                toggleTab (shouldShowCart) {
+                    this.isShowingCart = shouldShowCart
+                },
+
+                // 點擊 - / + 後的動作
+                minusOne (product) {
+                    product.amountShow--
+                    product.amountShow = (product.amountShow < 1) ? 1 : product.amountShow
+                },
+                addOne (product) {
+                    product.amountShow++
+                    product.amountShow = (product.amountShow > 9) ? 9 : product.amountShow
+                },
+
+                // 點擊 add to cart 後的動作
+                addToCart (product) {
+                    product.amount += product.amountShow
+                    
+                    product.showingIcon = true
+                    setTimeout(() => {
+                        product.showingIcon = false
+                    }, 800)
+                },
+
+                // 在購物車裡移除單一品項 ( 把數量設置成 0 )
+                remove (product) {
+                    product.amount = 0
+                },
+            },
+            computed: {
+                // 購物車裡的品項
+                productsInCart () {
+                    return this.products
+                        // 只顯示購買數量 > 0 的項目
+                        .filter(p => p.amount)
+                        // 算出每個產品的小計
+                        .map(p => {
+                            p.sum = p.amount * p.price
+                            return p
+                        })
+                },
+
+                // 木前購買的金額
+                total () {
+                    return this.productsInCart
+                        .reduce((sum, p) => (sum + p.sum), 0)
+                }
+            },
+
+
+        })
+    </script>
+    
+</body>
+</html>
