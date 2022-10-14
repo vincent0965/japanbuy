@@ -516,10 +516,6 @@
                 ],
             },
             methods: {
-                // 切換 產品列表 / 購物車 的 tab
-                toggleTab (shouldShowCart) {
-                    this.isShowingCart = shouldShowCart
-                },
 
                 // 點擊 - / + 後的動作
                 minusOne (product) {
@@ -538,7 +534,8 @@
                     product.showingIcon = true
                     setTimeout(() => {
                         product.showingIcon = false
-                    }, 800)
+                    }, 1000)
+                    product.amountShow = 0  //點擊後就歸零 避免多次點擊重複計算
                 },
 
                 // 在購物車裡移除單一品項 ( 把數量設置成 0 )
@@ -559,7 +556,7 @@
                         })
                 },
 
-                // 木前購買的金額
+                // 目前購買的金額
                 total () {
                     return this.productsInCart
                         .reduce((sum, p) => (sum + p.sum), 0)
