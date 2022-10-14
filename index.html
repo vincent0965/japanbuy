@@ -4,50 +4,51 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>日本代購商品預購中~~~</title>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/vue/2.7.11/vue.min.js" integrity="sha512-rUE9uHSFfDHr7vyxa541AcZiF0PvckTp83z2LLbFhQaXrgV2xiC0mtR5CQfM6mbdpIO2ODj+lFNj05LwvEkq9Q==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
     <style>
-
         main {
             display: flex;
             flex-grow: 1;
             overflow: hidden;
-
-            .content {
-                box-sizing: border-box;
-                width: 100%;
-                flex-shrink: 0;
-                overflow-y: scroll;
-                transition: transform 300ms;
-            }
+            background-color:#f9f9f9;
         }
 
+        /* .content {
+            box-sizing: border-box;
+            width: 40%;
+            flex-shrink: 0;
+            transition: transform 300ms;
+            padding: 15px;
+        } */
+
         .product {
-            position: relative;
-            margin: 20px;
+            margin: 15px;
             background: #fff;
             box-shadow: 0 0 10px rgba(0, 0, 0, .1);
+        }
 
-            .info-box {
-                display: flex;
-                padding: 15px 5px;
+        .info-box {
+            display:flexbox;
+            padding: 15px 5px;
+        }
 
-                img{
-                    width:30%;
-                    height:auto
-                }
+        img{
+            position: center;
+            width:80%;
+            height:auto
+        }
 
-                h2 {
-                    margin: 10px 0;
-                    padding: 0;
-                    font-size: 18px;
-                }
+        h2 {
+            margin: 10px 0;
+            padding: 0;
+            font-size: 18px;
+        }
 
-                p {
-                    margin: 0;
-                    color: #aba6a6;
-                }
-            }
+        p {
+            margin: 0;
+            color: #aba6a6;
+            text-align:left;
         }
         
         table {
@@ -142,16 +143,19 @@
         <main :class="{ shift: isShowingCart }">
             <!-- 瀏覽產品 -->
             <div class="content">
+                <h2>本次日本代購商品期間為2022/10/16至2022/10/23</h2>
                 請輸入你/妳的姓名:
                 <input type="text" v-model="message" />
+                <h3>購物清單在最底下</h3>
+                <h3>要許願請找宏為</h3>
                 <!-- 範例 HTML -->
                 <div class="product" v-for="product in products">
                     <div class="info-box">
                         <img :src="product.thumb" />
                         <div>
-                            <h2>{{ product.name }}</h2>
-                            <h3>{{ product.text }}</h3>
-                            <p>價格:${{ product.price }}</p>
+                            <h2>商品名稱: {{ product.name }}</h2>
+                            <h3>商品說明: {{ product.text }}</h3>
+                            <p>價格:$ {{ product.price }}</p>
                         </div>
                     </div>
                     <div class="action-box">
@@ -160,13 +164,68 @@
                             <span>{{ product.amountShow }}</span>
                             <button class="round" @click="addOne(product)">+</button>
                         </div>
+                        <br />
                         <button @click="addToCart(product)">add to cart</button>
+                        <br />
                     </div>
+                </div>
+
+                    <!-- 購物清單 -->
+                <div class="content">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th colspan="5">這是 {{ message }} 的購物清單喔!!</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr class="table-title">
+                                <td>品項</td>
+                                <td></td>
+                                <td>數量</td>
+                                <td></td>
+                                <td>單價</td>
+                                <td></td>
+                                <td>小計</td>
+                                <td></td>
+                            </tr>
+                            <tr v-for="product in productsInCart">
+                                <td>{{ product.name }}</td>
+                                <td></td>
+                                <td>{{ product.amount }}</td>
+                                <td></td>
+                                <td>{{ product.price }}</td>
+                                <td></td>
+                                <td>{{ product.sum }}</td>
+                                <td>
+                                    <button class="button-del" @click="remove(product)">×</button>
+                                </td>
+                            </tr>
+                        </tbody>
+                        <tfoot>
+                            <tr>
+                                <td colspan="3">Total <span class="total-price">$ {{ total }}</span></td>
+                                <td></td>
+                            </tr>
+                        </tfoot>
+                    </table>
+                    <!-- <button class="checkout">前往付款</button> -->
+                    <a>
+                        1.本商品包含日本消費稅(10%)以及國際貨運費用。
+                        <br />
+                        2.確認下訂到取貨需約兩周。
+                        <br />
+                        3.如果有想買但沒出現的，歡迎許願。
+                        <br />
+                        4.選擇好後請將購物清單截圖或拍照寄給我。
+                        <br />
+                        5.等我想到再補上來...
+                    </a>
                 </div>
             </div>
     
             <!-- 購物清單 -->
-            <div class="content">
+            <!-- <div class="content">
                 <table>
                     <thead>
                         <tr>
@@ -204,7 +263,7 @@
                         </tr>
                     </tfoot>
                 </table>
-                <!-- <button class="checkout">前往付款</button> -->
+                <button class="checkout">前往付款</button>
                 <a>
                     1.本商品包含日本消費稅(10%)以及國際貨運費用。
                     <br />
@@ -216,7 +275,7 @@
                     <br />
                     5.等我想到再補上來...
                 </a>
-            </div>
+            </div> -->
         </main>
     </div>
 
@@ -272,17 +331,8 @@
                         amount: 0,
                         amountShow: 0,
                         showingIcon: false
-                    },{
+                    }, {
                         id: '201',
-                        name: 'アリナミン',
-                        price: 1500,
-                        text:'合力他命 270錠入',
-                        thumb: 'https://image.rakuten.co.jp/biccamera/cabinet/product/0890/00000001882212_a01.jpg',
-                        amount: 0,
-                        amountShow: 0,
-                        showingIcon: false
-                    },{
-                        id: '202',
                         name: 'アリナミン',
                         price: 1500,
                         text:'合力他命 270錠入',
