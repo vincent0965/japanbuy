@@ -64,8 +64,8 @@
 
             th,  td {
                 min-width: 2em;
-                width: 15%;
-                padding: 15px;
+                width: 20%;
+                padding: 25px;
                 text-align: right;
 
                 &:first-child {
@@ -214,13 +214,15 @@
                         <h3>購買注意事項</h3>
                         1.商品價格已經包含日本消費稅(10%)以及國際貨運費用。
                         <br />
-                        2.本次到貨時間約在十月底。因航班仍受疫情影響不固定，可能會有延遲。
+                        2.本次到貨時間約在十月底，因航班仍受疫情影響不固定，可能會有延遲。
                         <br />
-                        3.如果有想買但沒出現的，歡迎許願。
+                        3.如果有想買但上面沒有的物品，歡迎許願。
                         <br />
-                        4.選擇好後請將購物清單截圖或拍照寄給我。
+                        4.海外郵寄包裹須符合台灣以及日本航空郵件規定，詳情請參考<a href="https://www.post.gov.tw/post/internet/SearchZone/index.jsp?ID=1406699177348">中華郵政海外郵件寄送規範</a>。
                         <br />
-                        5.等我想到再補上來...
+                        5.選擇好後請將購物清單截圖或拍照寄給我。
+                        <br />
+                        6.等我想到再補上來...
                     </a>
                 </div>
             </div>
@@ -404,6 +406,15 @@
                         amount: 0,
                         amountShow: 0,
                         showingIcon: false
+                    },{
+                        id: '405',
+                        name: 'ロート製薬 メンソレータム エクシブ W',
+                        price: 310,
+                        text:'指甲藥膏(針對指甲感染、水泡、蟲咬等) 15g',
+                        thumb: 'https://thumbnail.image.rakuten.co.jp/@0_mall/tsuruha/cabinet/shouhin41/4987241142590.jpg',
+                        amount: 0,
+                        amountShow: 0,
+                        showingIcon: false
                     }, {
                         id: '501',
                         name: 'Vロートアクティブプレミアム',
@@ -490,7 +501,7 @@
                         name: 'ロッテ ブラックブラック',
                         price: 1015,
                         text:'LOTTE 黑X黑 口香糖 (6罐/箱)',
-                        thumb: 'https://thumbnail.image.rakuten.co.jp/@0_mall/exicoast02/cabinet/lotte/compass1663809463.jpg',
+                        thumb: 'https://thumbnail.image.rakuten.co.jp/@0_mall/ladydrug/cabinet/gazo27/4903333106530_2.jpg',
                         amount: 0,
                         amountShow: 0,
                         showingIcon: false
@@ -498,7 +509,7 @@
                         id: '706',
                         name: '茅乃舎だし',
                         price: 990,
-                        text:'茅乃舍高湯包 (一般/減鹽/蔬菜/香菇/魚乾)',
+                        text:'茅乃舍高湯包 (一般/減鹽/蔬菜/香菇/魚乾) (五包入)',
                         thumb: 'https://thumbnail.image.rakuten.co.jp/@0_mall/sup-s-r/cabinet/tyoumiryou/5syu.jpg',
                         amount: 0,
                         amountShow: 0,
@@ -512,6 +523,51 @@
                         amount: 0,
                         amountShow: 0,
                         showingIcon: false
+                    }, {
+                        id: '801',
+                        name: '白い恋人',
+                        price: 600,
+                        text:'白色戀人 24包入/盒',
+                        thumb: 'https://shop.r10s.jp/senka-land/cabinet/06795513/imgrc0138987581.jpg',
+                        amount: 0,
+                        amountShow: 0,
+                        showingIcon: false
+                    }, {
+                        id: '802',
+                        name: 'メリー チョコレート',
+                        price: 600,
+                        text:'Mary`s 巧克力禮盒 24入/盒',
+                        thumb: 'https://shop.r10s.jp/gift-lien/cabinet/sweets/marys1000-1.jpg',
+                        amount: 0,
+                        amountShow: 0,
+                        showingIcon: false
+                    }, {
+                        id: '803',
+                        name: 'メリー チョコレート',
+                        price: 350,
+                        text:'Mary`s 巧克力禮盒 24入/盒',
+                        thumb: 'https://shop.r10s.jp/gift-lien/cabinet/sweets/marys1000-1.jpg',
+                        amount: 0,
+                        amountShow: 0,
+                        showingIcon: false
+                    }, {
+                        id: '804',
+                        name: '東京ばな奈',
+                        price: 420,
+                        text:'東京香蕉蛋糕 8入/盒',
+                        thumb: 'https://thumbnail.image.rakuten.co.jp/@0_mall/brings/cabinet/tokyobanana/normal/banana-img.jpg',
+                        amount: 0,
+                        amountShow: 0,
+                        showingIcon: false
+                    }, {
+                        id: '805',
+                        name: 'サンリツ サンフィガロ',
+                        price: 480,
+                        text:'FIGARO 餅乾禮盒 42入/盒',
+                        thumb: 'https://shop.r10s.jp/tabaki/cabinet/tukurikomi/figaro/g1924-206_1.jpg',
+                        amount: 0,
+                        amountShow: 0,
+                        showingIcon: false
                     }
                 ],
             },
@@ -520,7 +576,7 @@
                 // 點擊 - / + 後的動作
                 minusOne (product) {
                     product.amountShow--
-                    product.amountShow = (product.amountShow < 1) ? 1 : product.amountShow
+                    product.amountShow = (product.amountShow < 0) ? 1 : product.amountShow
                 },
                 addOne (product) {
                     product.amountShow++
