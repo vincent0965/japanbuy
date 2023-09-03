@@ -143,7 +143,7 @@
         <main :class="{ shift: isShowingCart }">
             <!-- 瀏覽產品 -->
             <div class="content">
-                <h2>本次日本代購商品期間為2022/10/16至2022/10/23</h2>
+                <h2>本次日本代購商品下單期間為2023/09/04至2023/09/17</h2>
                 請輸入你/妳的姓名:
                 <input type="text" v-model="message" />
                 <h3>購物清單在最底下</h3>
@@ -214,7 +214,7 @@
                         <h3>購買注意事項</h3>
                         1.商品價格已經包含日本消費稅(10%)以及國際貨運費用。
                         <br />
-                        2.本次到貨時間約在十月底，因航班仍受疫情影響不固定，可能會有延遲。
+                        2.本次到貨時間約在九月底。
                         <br />
                         3.如果有想買但上面沒有的物品，歡迎許願。
                         <br />
@@ -226,59 +226,6 @@
                     </a>
                 </div>
             </div>
-    
-            <!-- 購物清單 -->
-            <!-- <div class="content">
-                <table>
-                    <thead>
-                        <tr>
-                            <th colspan="5">這是 {{ message }} 的購物清單喔!!</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr class="table-title">
-                            <td>品項</td>
-                            <td></td>
-                            <td>數量</td>
-                            <td></td>
-                            <td>單價</td>
-                            <td></td>
-                            <td>小計</td>
-                            <td></td>
-                        </tr>
-                        <tr v-for="product in productsInCart">
-                            <td>{{ product.name }}</td>
-                            <td></td>
-                            <td>{{ product.amount }}</td>
-                            <td></td>
-                            <td>{{ product.price }}</td>
-                            <td></td>
-                            <td>{{ product.sum }}</td>
-                            <td>
-                                <button class="button-del" @click="remove(product)">×</button>
-                            </td>
-                        </tr>
-                    </tbody>
-                    <tfoot>
-                        <tr>
-                            <td colspan="3">Total <span class="total-price">$ {{ total }}</span></td>
-                            <td></td>
-                        </tr>
-                    </tfoot>
-                </table>
-                <button class="checkout">前往付款</button>
-                <a>
-                    1.本商品包含日本消費稅(10%)以及國際貨運費用。
-                    <br />
-                    2.確認下訂到取貨需約兩周。
-                    <br />
-                    3.如果有想買但沒出現的，歡迎許願。
-                    <br />
-                    4.選擇好後請將購物清單截圖或拍照寄給我。
-                    <br />
-                    5.等我想到再補上來...
-                </a>
-            </div> -->
         </main>
     </div>
 
@@ -292,31 +239,31 @@
                     {
                         id: '101',
                         name: '大正漢方胃腸薬',
-                        price:470 ,
-                        text:'大正漢方胃腸薬 48包',
-                        thumb: 'https://thumbnail.image.rakuten.co.jp/@0_mall/sundrug/cabinet/39drug2/4987306009486.jpg',
+                        price:420 ,
+                        text:'大正漢方胃腸薬(粉狀) 48包',
+                        thumb: 'https://tshop.r10s.jp/sundrug/cabinet/84/4987306009486.jpg?_ex=400x400&s=0&r=1',
                         amount: 0,
                         amountShow: 0,
                         showingIcon: false
-                    }, {
+                    },{
                         id: '102',
                         name: 'キャベジン胃腸薬',
                         price: 415,
                         text:'キャベジン胃腸薬 300錠入',
-                        thumb: 'https://shop.r10s.jp/sundrug/cabinet/39drug2/4987067205202.jpg',
+                        thumb: 'https://tshop.r10s.jp/master/cabinet/200-24/a0057456.jpg?downsize=300:*',
                         amount: 0,
                         amountShow: 0,
                         showingIcon: false
-                    }, {
+                    },{
                         id: '103',
                         name: '第一三共胃腸薬',
                         price: 330,
-                        text:'第一三共胃腸薬 粉狀 60包入',
+                        text:'第一三共胃腸薬(粉狀) 60包入',
                         thumb: 'https://thumbnail.image.rakuten.co.jp/@0_mall/fortress/cabinet/products/06713660/medeal4987107629753.jpg',
                         amount: 0,
                         amountShow: 0,
                         showingIcon: false
-                    }, {
+                    },{
                         id: '104',
                         name: '御岳百草丸',
                         price: 500,
@@ -325,16 +272,16 @@
                         amount: 0,
                         amountShow: 0,
                         showingIcon: false
-                    }, {
+                    },{
                         id: '105',
                         name: '太田胃散A',
                         price: 500,
                         text:'太田胃散A 300錠入(錠劑)',
-                        thumb: 'https://thumbnail.image.rakuten.co.jp/@0_mall/sundrug/cabinet/39drug2/4987033811116.jpg',
+                        thumb: 'https://tshop.r10s.jp/sundrug/cabinet/67/4987033811116.jpg?_ex=400x400&s=0&r=1',
                         amount: 0,
                         amountShow: 0,
                         showingIcon: false
-                    }, {
+                    },{
                         id: '201',
                         name: 'アリナミン',
                         price: 1500,
@@ -343,25 +290,25 @@
                         amount: 0,
                         amountShow: 0,
                         showingIcon: false
-                    }, {
+                    },{
                         id: '301',
                         name: '強力わかもと',
-                        price: 625,
+                        price: 630,
                         text:'若元錠 1000錠入',
                         thumb: 'https://shop.r10s.jp/stacon/cabinet/2016-1/4987243114014_1.jpg',
                         amount: 0,
                         amountShow: 0,
                         showingIcon: false
-                    }, {
+                    },{
                         id: '302',
                         name: 'サロンパス',
                         price: 290,
                         text:'薩隆帕斯藥布 120枚入 (4.6 * 7.2 公分)',
-                        thumb: 'https://shop.r10s.jp/sundrug/cabinet/01drug/4987188100578.jpg',
+                        thumb: 'https://tshop.r10s.jp/sundrug/cabinet/1/4987188100578.jpg?_ex=400x400&s=0&r=1',
                         amount: 0,
                         amountShow: 0,
                         showingIcon: false
-                    }, {
+                    },{
                         id: '303',
                         name: 'サロンパスAe',
                         price: 145,
@@ -370,16 +317,16 @@
                         amount: 0,
                         amountShow: 0,
                         showingIcon: false
-                    }, {
+                    },{
                         id: '401',
                         name: 'チョコラBB',
-                        price: 780,
-                        text:'CHOCOLA BB B群 270錠入',
-                        thumb: 'https://thumbnail.image.rakuten.co.jp/@0_mall/sundrug/cabinet/01drug/4987028123668.jpg',
+                        price: 900,
+                        text:'CHOCOLA BB B群 250錠入',
+                        thumb: 'https://tshop.r10s.jp/tennouji-oka1925/cabinet/compass1675667972.jpg?downsize=200:*',
                         amount: 0,
                         amountShow: 0,
                         showingIcon: false
-                    }, {
+                    },{
                         id: '402',
                         name: 'ペアアクネ クリームW',
                         price: 190,
@@ -388,7 +335,7 @@
                         amount: 0,
                         amountShow: 0,
                         showingIcon: false
-                    }, {
+                    },{
                         id: '403',
                         name: 'メンソレータム AD20 乳液',
                         price: 420,
@@ -397,7 +344,7 @@
                         amount: 0,
                         amountShow: 0,
                         showingIcon: false
-                    }, {
+                    },{
                         id: '404',
                         name: 'メンソレータム AD20',
                         price: 450,
@@ -415,7 +362,7 @@
                         amount: 0,
                         amountShow: 0,
                         showingIcon: false
-                    }, {
+                    },{
                         id: '501',
                         name: 'Vロートアクティブプレミアム',
                         price: 340,
@@ -424,7 +371,7 @@
                         amount: 0,
                         amountShow: 0,
                         showingIcon: false
-                    }, {
+                    },{
                         id: '502',
                         name: '参天製薬 サンテFX ネオ',
                         price: 90,
@@ -433,7 +380,7 @@
                         amount: 0,
                         amountShow: 0,
                         showingIcon: false
-                    }, {
+                    },{
                         id: '601',
                         name: 'パブロンゴールドA微粒',
                         price: 430,
@@ -442,7 +389,7 @@
                         amount: 0,
                         amountShow: 0,
                         showingIcon: false
-                    }, {
+                    },{
                         id: '602',
                         name: '龍角散ダイレクトスティックピーチ',
                         price: 430,
@@ -451,16 +398,16 @@
                         amount: 0,
                         amountShow: 0,
                         showingIcon: false
-                    }, {
+                    },{
                         id: '603',
                         name: 'イブクイック頭痛薬',
                         price: 240,
                         text:'EVE頭痛藥(藍色) 40錠入',
-                        thumb: 'https://thumbnail.image.rakuten.co.jp/@0_mall/sundrug/cabinet/39drug2/4987300052716.jpg',
+                        thumb: 'https://image.rakuten.co.jp/biccamera/cabinet/product/1214/00000002072401_a01.jpg',
                         amount: 0,
                         amountShow: 0,
                         showingIcon: false
-                    }, {
+                    },{
                         id: '604',
                         name: '太田胃散',
                         price: 385,
@@ -473,7 +420,7 @@
                         id: '605',
                         name: 'イブクイック頭痛薬DX',
                         price: 300,
-                        text:'EVE頭痛藥(金色) 40錠入',
+                        text:'EVE頭痛藥(金色) 40錠入 含有保護胃黏膜成分 不傷胃',
                         thumb: 'https://thumbnail.image.rakuten.co.jp/@0_mall/uniquedrugstore2021/cabinet/compass1642731153.jpg',
                         amount: 0,
                         amountShow: 0,
@@ -481,7 +428,7 @@
                     },{
                         id: '606',
                         name: '皇漢堂製薬 ビューラック',
-                        price: 220,
+                        price: 240,
                         text:'皇漢堂製薬 便祕碇 400錠入',
                         thumb: 'https://thumbnail.image.rakuten.co.jp/@0_mall/uniquedrugstore2021/cabinet/compass1641968113.jpg',
                         amount: 0,
@@ -496,7 +443,7 @@
                         amount: 0,
                         amountShow: 0,
                         showingIcon: false
-                    }, {
+                    },{
                         id: '702',
                         name: 'ミンティア MINTIA',
                         price: 280,
@@ -505,7 +452,7 @@
                         amount: 0,
                         amountShow: 0,
                         showingIcon: false
-                    }, {
+                    },{
                         id: '703',
                         name: 'UCC 職人の珈琲',
                         price: 850,
@@ -514,16 +461,16 @@
                         amount: 0,
                         amountShow: 0,
                         showingIcon: false
-                    }, {
+                    },{
                         id: '704',
-                        name: '森永製菓　塩キャラメル袋',
+                        name: '森永製菓 塩キャラメル袋',
                         price: 79,
                         text:'森永牛奶糖 92g/包',
                         thumb: 'https://thumbnail.image.rakuten.co.jp/@0_mall/segp-shop/cabinet/kashi/imgrc0075803477.jpg',
                         amount: 0,
                         amountShow: 0,
                         showingIcon: false
-                    }, {
+                    },{
                         id: '705',
                         name: 'ロッテ ブラックブラック',
                         price: 1015,
@@ -532,7 +479,7 @@
                         amount: 0,
                         amountShow: 0,
                         showingIcon: false
-                    }, {
+                    },{
                         id: '706',
                         name: '茅乃舎だし',
                         price: 990,
@@ -541,7 +488,7 @@
                         amount: 0,
                         amountShow: 0,
                         showingIcon: false
-                    }, {
+                    },{
                         id: '707',
                         name: 'DHC 薬用リップクリーム',
                         price: 140,
@@ -550,16 +497,61 @@
                         amount: 0,
                         amountShow: 0,
                         showingIcon: false
-                    }, {
+                    },{
+                        id: '708',
+                        name: '熊野油脂 ファーマアクト クールボディソープ 550ml',
+                        price: 150,
+                        text:'KUM 熊野沐浴乳 550ml',
+                        thumb: 'https://tshop.r10s.jp/auc-azzuro-/cabinet/product_img10/10036104.jpg?downsize=320:*',
+                        amount: 0,
+                        amountShow: 0,
+                        showingIcon: false
+                    },{
+                        id: '709',
+                        name: '熊野油脂 ファーマアクト クールボディソープ 800ml 詰め替え',
+                        price: 140,
+                        text:'KUM 熊野沐浴乳補充包 800ml',
+                        thumb: 'https://tshop.r10s.jp/shop-aube/cabinet/product_img10/10036105.jpg?downsize=320:*',
+                        amount: 0,
+                        amountShow: 0,
+                        showingIcon: false
+                    },{
+                        id: '710',
+                        name: 'BOTANIST ボタニスト 490ml',
+                        price: 410,
+                        text:'BOTANIST 洗髮精 (由左至右:保濕、柔順、損傷護理、頭皮清潔、彈性髮根，欲購買請私訊告知要哪一種)',
+                        thumb: 'https://tshop.r10s.jp/kobe-beauty-labo/cabinet/botanist_img/thum/10193857/imgrc0085488971.jpg?_ex=400x400&s=0&r=1',
+                        amount: 0,
+                        amountShow: 0,
+                        showingIcon: false
+                    },{
+                        id: '711',
+                        name: 'BOTANIST ボタニスト 425ml 詰め替え',
+                        price: 350,
+                        text:'BOTANIST 洗髮精補充包 425ml (由左至右:保濕、柔順、損傷護理、頭皮清潔、彈性髮根，欲購買請私訊告知要哪一種)',
+                        thumb: 'https://tshop.r10s.jp/kobe-beauty-labo/cabinet/04278206/bota-refill/imgrc0079837451.jpg?_ex=400x400&s=0&r=1',
+                        amount: 0,
+                        amountShow: 0,
+                        showingIcon: false
+                    },{
+                        id: '712',
+                        name: 'ALLIE SPF50+ PA++++ 40g',
+                        price: 500,
+                        text:'ALLIE 防曬乳 紫陽明妍-遮飾暗沉 40g',
+                        thumb: 'https://tshop.r10s.jp/kumokumo-square/cabinet/ikou23/10046475.jpg?downsize=400:*',
+                        amount: 0,
+                        amountShow: 0,
+                        showingIcon: false
+                    },{
                         id: '801',
                         name: '白い恋人',
                         price: 600,
                         text:'白色戀人 24包入/盒',
-                        thumb: 'https://shop.r10s.jp/senka-land/cabinet/06795513/imgrc0138987581.jpg',
+                        thumb: 'https://tshop.r10s.jp/hokkaido-omiyage/cabinet/koibito/isiya013-pack.jpg?downsize=330:*',
                         amount: 0,
                         amountShow: 0,
                         showingIcon: false
-                    }, {
+                    },{
                         id: '802',
                         name: 'メリー チョコレート',
                         price: 600,
@@ -568,7 +560,7 @@
                         amount: 0,
                         amountShow: 0,
                         showingIcon: false
-                    }, {
+                    },{
                         id: '803',
                         name: '東京ばな奈',
                         price: 420,
@@ -577,7 +569,7 @@
                         amount: 0,
                         amountShow: 0,
                         showingIcon: false
-                    }, {
+                    },{
                         id: '804',
                         name: 'サンリツ サンフィガロ',
                         price: 480,
@@ -586,46 +578,55 @@
                         amount: 0,
                         amountShow: 0,
                         showingIcon: false
-                    }, {
+                    },{
+                        id: '806',
+                        name: '日清食品 カップヌードル 75g 20入',
+                        price: 1050,
+                        text:'日清杯麵 75g 20入(一箱) (左上-右下: 醬油、海鮮、咖哩、味噌、番茄，欲購買請私訊告知要哪一種)',
+                        thumb: 'https://tshop.r10s.jp/kimisara/cabinet//compass1691839283.jpg?_ex=200x200&s=0&r=1',
+                        amount: 0,
+                        amountShow: 0,
+                        showingIcon: false
+                    },{
                         id: '901',
-                        name: 'DHA&EPA＋セサミンEX',
-                        price: 2350,
+                        name: 'DHA&EPA + セサミンEX',
+                        price: 2250,
                         text:'三得利 DHA 魚油 240粒入',
                         thumb: 'https://www.suntory-kenko.com/assets/img/supplement/main/43322/product_summary/pkg_dha_kv_rn.png?20220622',
                         amount: 0,
                         amountShow: 0,
                         showingIcon: false
-                    }, {
+                    },{
                         id: '902',
                         name: 'グルコサミン アクティブ',
                         price: 2100,
-                        text:'三得利 固立申 甲殼軟骨素 360粒入',
+                        text:'三得利 固立申 甲殼軟骨素葡萄糖胺 360粒入',
                         thumb: 'https://www.suntory-kenko.com/assets/img/supplement/main/43341/product_summary/pkg_glc_kv.png?20220524',
                         amount: 0,
                         amountShow: 0,
                         showingIcon: false
-                    }, {
+                    },{
                         id: '903',
                         name: '黒酢にんにく',
-                        price: 1200,
+                        price: 1100,
                         text:'三得利 黑醋大蒜精 180粒入',
                         thumb: 'https://www.suntory-kenko.com/assets/img/supplement/pouch/43371/product_summary/pkg_kznk_kv.png?20220524',
                         amount: 0,
                         amountShow: 0,
                         showingIcon: false
-                    }, {
+                    },{
                         id: '904',
                         name: 'ビトアス ザ パーフェクト セラム',
-                        price: 2300,
+                        price: 2200,
                         text:'三得利 美顏保濕精華乳液 120ml',
                         thumb: 'https://www.suntory-kenko.com/assets/img/skincare/vitoas/52100/product_summary/pkg_52100_kv.png?20220915',
                         amount: 0,
                         amountShow: 0,
                         showingIcon: false
-                    }, {
+                    },{
                         id: '905',
                         name: 'セサミンEX',
-                        price: 2350,
+                        price: 2250,
                         text:'三得利 芝麻明E 270粒入',
                         thumb: 'https://www.suntory-kenko.com/Content/abtest/s3622/img/pkg_ssmn_kv_s3622.png?20220825',
                         amount: 0,
